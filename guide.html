@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPR - คู่มือการใช้งานระบบ (User Guide)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS (Reused from the main app) -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+        .guide-sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .guide-main {
+            margin-left: 280px;
+            padding: 2.5rem;
+            min-height: 100vh;
+        }
+        .guide-section {
+            padding-top: 2rem;
+            margin-bottom: 4rem;
+        }
+        .guide-nav .nav-link {
+            color: #6c757d;
+            border-radius: 0.5rem;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        .guide-nav .nav-link:hover {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .guide-nav .nav-link.active {
+            background-color: #fdf5e6; /* light gold */
+            color: #b8860b; /* gold */
+            font-weight: 600;
+        }
+        .screenshot-placeholder {
+            background-color: #f1f3f5;
+            border: 2px dashed #dee2e6;
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: #adb5bd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 768px) {
+            .guide-sidebar {
+                display: none;
+            }
+            .guide-main {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-canvas text-dark font-thai relative" data-bs-spy="scroll" data-bs-target="#guide-menu" tabindex="0">
+
+<!-- Mobile Header for Guide (Visible only on mobile) -->
+<div class="d-flex d-md-none w-100 bg-white border-bottom shadow-sm align-items-center px-4 py-2 justify-content-between sticky-top" style="height: 60px; z-index: 1020;">
+    <div class="d-flex align-items-center">
+        <a href="index.html" class="text-decoration-none">
+            <i class="bi bi-arrow-left fs-4 text-dark me-3"></i>
+        </a>
+        <div class="rounded bg-gradient-gold text-white fw-bold d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">S</div>
+        <span class="fs-6 fw-bold text-dark mb-0 ms-2">SPR Guide</span>
+    </div>
+</div>
+
+<!-- Guide Sidebar -->
+<aside class="guide-sidebar bg-white border-end shadow-sm d-flex flex-column p-4">
+    <div class="mb-5">
+        <a href="index.html" class="text-decoration-none d-flex align-items-center mb-4 text-secondary hover-gold transition-all">
+            <i class="bi bi-arrow-left me-2"></i>
+            <span class="fw-medium">กลับสู่ระบบหลังบ้าน</span>
+        </a>
+        <div class="d-flex align-items-center w-100">
+            <div class="rounded bg-gradient-gold text-white fw-bold d-flex align-items-center justify-content-center shadow-sm flex-shrink-0" style="width: 45px; height: 45px; font-size: 1.2rem;">S</div>
+            <div>
+                <div class="fs-5 fw-bold text-dark mb-0 ms-3 lh-sm">คู่มือการใช้งาน</div>
+                <div class="text-muted small ms-3">SPR Matrix System</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-uppercase text-muted fw-bold small mb-3 px-2" style="letter-spacing: 1px;">หัวข้อเนื้อหา (Contents)</div>
+    <nav id="guide-menu" class="nav flex-column guide-nav">
+        <a class="nav-link active" href="#intro"><i class="bi bi-info-circle-fill me-2"></i> บทนำ</a>
+        <a class="nav-link" href="#matrix"><i class="bi bi-grid-1x2-fill me-2"></i> ระบบผังห้องพัก</a>
+        <a class="nav-link" href="#customer"><i class="bi bi-people-fill me-2"></i> การจัดการฐานลูกค้า</a>
+        <a class="nav-link" href="#ocr"><i class="bi bi-person-vcard-fill me-2"></i> เครื่องมือสแกนบัตร (AI)</a>
+        <a class="nav-link" href="#quota"><i class="bi bi-file-earmark-text-fill me-2"></i> การออกใบเสนอราคา</a>
+        <a class="nav-link" href="#booking"><i class="bi bi-bag-check-fill me-2"></i> ระบบการจองและล็อคห้อง</a>
+        <a class="nav-link" href="#chatbot"><i class="bi bi-robot me-2"></i> AI ผู้ช่วยอัจฉริยะ</a>
+    </nav>
+    
+    <div class="mt-auto px-2 pt-4 border-top">
+        <div class="small text-muted mb-2">อัปเดตล่าสุด: เม.ย. 2026</div>
+        <div class="small text-muted d-flex align-items-center">
+            <i class="bi bi-headset me-2"></i> แจ้งปัญหาการใช้งาน 1234
+        </div>
+    </div>
+</aside>
+
+<!-- Main Document Content -->
+<main class="guide-main">
+    <div class="container bg-white p-4 p-md-5 rounded-4 shadow-sm border" style="max-width: 900px;">
+        
+        <header class="mb-5 pb-4 border-bottom text-center">
+            <span class="badge bg-gold-subtle text-gold px-3 py-2 rounded-pill mb-3 fs-6">User Manual V.1.0</span>
+            <h1 class="display-6 fw-bold text-dark mb-3">คู่มือการใช้งานระบบบริหารงานขายโครงการ (SPR Matrix)</h1>
+            <p class="fs-5 text-secondary">เอกสารคู่มือเบื้องต้นเพื่อให้เจ้าหน้าที่ฝ่ายขายใช้งานระบบได้อย่างราบรื่นและมีประสิทธิภาพ ตอบโจทย์การขายยุคดิจิทัล</p>
+        </header>
+
+        <!-- Section: Intro -->
+        <section id="intro" class="guide-section">
+            <h3 class="fw-bold mb-3 border-start border-4 border-gold ps-3">1. บทนำ (Introduction)</h3>
+            <p class="fs-6 text-secondary lh-lg mb-4">
+                ระบบ SPR Matrix ถูกออกแบบมาให้ใช้งานง่าย รวดเร็ว และเชื่อมต่อข้อมูลแบบไร้รอยต่อ 
+                เพื่อช่วยให้กระบวนการขาย ตั้งแต่การค้นหาห้องว่าง ไปจนถึงการจอง และออกใบเสนอราคาสามารถทำจบได้ภายในระบบเดียว โดยไม่จำเป็นต้องใช้กระดาษ (Paperless Sales Flow)
+            </p>
+            <div class="alert bg-info bg-opacity-10 text-dark border-info border-opacity-25 rounded-4 d-flex align-items-center p-4">
+                <i class="bi bi-lightbulb-fill fs-1 text-info me-4"></i>
+                <div>
+                    <strong class="fs-5 d-block mb-1">สลับภาษา (Bilingual Support)</strong>
+                    ระบบรองรับการใช้งาน 2 ภาษา ทั้ง <b>ไทย</b> และ <b>อังกฤษ</b> คุณสามารถกดสลับภาษาได้ทันที ที่ปุ่มมุมซ้ายล่างสุดของแถบเมนู (Sidebar)
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Matrix -->
+        <section id="matrix" class="guide-section">
+            <h3 class="fw-bold mb-4 border-start border-4 border-gold ps-3">2. ระบบผังห้องพัก (Unit Matrix)</h3>
+            <p class="text-secondary lh-lg mb-4">
+                หน้าจอหลักที่สำคัญที่สุดของระบบ (แดชบอร์ด) ที่ใช้สำหรับแสดงสถานะของห้องทั้งหมดในโครงการ โดยคุณสามารถดูข้อมูล อาคาร ราคาช่วงต่างๆ และตำแหน่งห้องได้อย่างรวดเร็ว
+            </p>
+            
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="card rounded-4 border-secondary-subtle h-100">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark mb-4">การอ่านค่าสีสถานะห้อง</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="rounded-circle bg-success shadow-sm me-3 flex-shrink-0" style="width:20px;height:20px;"></span> 
+                                <div><strong class="text-dark">สีเขียว (ว่าง):</strong> ห้องพร้อมเสนอขายให้ลูกค้าทันที</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="rounded-circle bg-warning shadow-sm me-3 flex-shrink-0" style="width:20px;height:20px;"></span> 
+                                <div><strong class="text-dark">สีเหลือง (จองแล้ว):</strong> มีลูกค้าวางเงินจองไว้เรียบร้อยแล้ว</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="rounded-circle bg-dark shadow-sm me-3 flex-shrink-0" style="width:20px;height:20px;"></span> 
+                                <div><strong class="text-dark">สีดำ (ติดล็อค):</strong> ห้องถูกล็อคชั่วคราวอยู่ระหว่างเจรจา (ผู้มีสิทธิ์เท่านั้นที่ปลดล็อคได้)</div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="rounded-circle bg-secondary shadow-sm me-3 flex-shrink-0" style="width:20px;height:20px;"></span> 
+                                <div><strong class="text-dark">สีเทา (ขายแล้ว):</strong> ห้องทำสัญญาสมบูรณ์ ปิดการขาย</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card rounded-4 border-0 h-100 bg-light-gold">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-gold"><i class="bi bi-funnel-fill me-2"></i> การกรองข้อมูล (Filter)</h5>
+                            <p class="text-secondary mt-3 lh-lg">
+                                ด้านบนของผังห้องจะมี <b>ปุ่มตัวกรองสถานะ</b> เช่น กด "ว่าง" เพื่อให้ระบบไฮไลต์เฉพาะห้องสีเขียวให้เด่นชัดขึ้น
+                                <br><br>
+                                นอกจากนี้คุณยังสามารถปรับ <b>ตัวกรองราคา (Price)</b> ที่แถบด้านบนสุด เพื่อให้เห็นเฉพาะห้องที่อยู่ในช่วงงบประมาณของลูกค้าได้ทันที (เช่น ต่ำกว่า 3 ล้านบาท)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="screenshot-placeholder mt-4">
+                <i class="bi bi-display fs-1 mb-3 text-secondary opacity-50"></i>
+                <div class="fw-medium text-dark mb-1">วิดีโอ/รูปภาพประกอบ: หน้าจอผังห้อง (Unit Matrix)</div>
+                <div class="small">ระบบจำลอง (Mockup) พื้นที่กราฟิก</div>
+            </div>
+        </section>
+
+        <!-- Section: Customer -->
+        <section id="customer" class="guide-section">
+            <h3 class="fw-bold mb-3 border-start border-4 border-gold ps-3">3. การจัดการฐานลูกค้า (Customer Management)</h3>
+            <p class="text-secondary lh-lg mb-4">เข้าถึงผ่านเมนูหลัก <b>"ข้อมูลลูกค้า"</b> เป็นศูนย์รวมข้อมูลลูกค้าที่คุณกำลังดูแลอยู่ สามารถเพิ่ม แก้ไข และลบข้อมูลเพื่อจัดการลีดของคุณได้</p>
+            
+            <ul class="lh-lg text-secondary mb-4 list-group list-group-flush rounded-4">
+                <li class="list-group-item bg-light border-0 py-3 mb-2 rounded-4">
+                    <i class="bi bi-plus-circle-fill text-gold me-2"></i> <b>การเพิ่มลูกค้าใหม่:</b> คลิกปุ่ม "+ เพิ่มลูกค้า" ด้านบนขวา หรือเพิ่มได้ทันทีจากหน้าจอทำใบเสนอราคา
+                </li>
+                <li class="list-group-item bg-light border-0 py-3 mb-2 rounded-4">
+                    <i class="bi bi-pencil-fill text-primary me-2"></i> <b>การแก้ไขข้อมูล:</b> กดปุ่ม "แก้ไข" ท้ายชื่อลูกค้า เพื่ออัปเดตเบอร์โทร อีเมล หรือชื่อ
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section: OCR -->
+        <section id="ocr" class="guide-section">
+            <h3 class="fw-bold mb-4 border-start border-4 border-gold ps-3">4. เครื่องมือสแกนบัตรอัจฉริยะ (AI OCR Auto-fill)</h3>
+            <div class="row g-4 align-items-center">
+                <div class="col-md-7">
+                    <p class="text-secondary lh-lg mb-3">
+                        ฟีเจอร์ใหม่ที่ช่วยลดระยะเวลาของฝ่ายขายได้อย่างมหาศาล ระบบจะดึงข้อมูลจากรูปภาพบัตรประชาชนของลูกค้า มากรอกลงในฟอร์มข้อเสนอให้อัตโนมัติ ป้องกันการพิมพ์ผิด
+                    </p>
+                    <ol class="lh-lg text-secondary">
+                        <li>เปิดหน้าต่างย่อย <b>"เพิ่มข้อมูลลูกค้าใหม่"</b></li>
+                        <li>ลากไฟล์รูปภาพบัตรประชาชน (หรือกดเบราว์เซอร์หาไฟล์) ลงในกรอบเส้นประ <b>"สแกนบัตรประชาชน"</b></li>
+                        <li>ระบบจะจำลองการประมวลผล (มีแถบโหลดแสดง)</li>
+                        <li>เมื่อเสร็จสิ้น ฟิลด์ <b>เลขบัตรประชาชน, ชื่อ, นามสกุล</b> จะถูกกรอกให้อัตโนมัติ พร้อมกะพริบสีเขียวแสดงความสำเร็จ</li>
+                    </ol>
+                </div>
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="bg-dark p-4 text-center position-relative">
+                            <i class="bi bi-camera text-white opacity-25" style="font-size: 5rem;"></i>
+                            <div class="position-absolute top-50 start-50 translate-middle w-100">
+                                <div class="spinner-border text-gold" role="status"></div>
+                                <div class="text-white mt-2 small">Scanning AI...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Quotation -->
+        <section id="quota" class="guide-section">
+            <h3 class="fw-bold mb-4 border-start border-4 border-gold ps-3">5. การออกใบเสนอราคา (Quotation)</h3>
+            <p class="text-secondary lh-lg mb-4">
+                การเสนอราคาแบบดิจิทัล ช่วยให้ลูกค้าเห็นยอดเงินรวดเร็ว พิมพ์ลงกระดาษหรือส่งต่อได้ทันที
+            </p>
+            <div class="bg-white border rounded-4 p-4 shadow-sm">
+                <h5 class="fw-bold text-dark mb-4">ขั้นตอนการออกใบเสนอราคา</h5>
+                <div class="d-flex mb-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <span class="rounded-circle bg-gold text-white d-flex align-items-center justify-content-center fw-bold" style="width: 30px; height: 30px;">1</span>
+                    </div>
+                    <div class="ms-3">
+                        <strong class="fs-5 d-block text-dark">คลิกห้องสถานะว่าง (สีเขียว)</strong>
+                        <p class="text-secondary mb-0">ที่หน้าจอหลัก "ผังห้องพัก" ให้คลิกห้องที่ต้องการเสนอขาย จะมีหน้าต่าง (Modal) ปรากฏขึ้นมา</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <span class="rounded-circle bg-gold text-white d-flex align-items-center justify-content-center fw-bold" style="width: 30px; height: 30px;">2</span>
+                    </div>
+                    <div class="ms-3">
+                        <strong class="fs-5 d-block text-dark">เลือกรายชื่อลูกค้า</strong>
+                        <p class="text-secondary mb-0">ระบบด้านขวาจะสรุปราคาห้อง ส่วนลด (โปรโมชั่น) และราคาสุทธิ ให้คุณเลือกลูกค้าจากช่องค้นหา หรือกด "+ ลูกค้าใหม่" เพื่อเพิ่มลูกค้ารายใหม่ลงไป</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-2">
+                    <div class="flex-shrink-0 mt-1">
+                        <span class="rounded-circle bg-gold text-white d-flex align-items-center justify-content-center fw-bold" style="width: 30px; height: 30px;">3</span>
+                    </div>
+                    <div class="ms-3">
+                        <strong class="fs-5 d-block text-dark">กดยืนยันปุ่ม "ออกใบเสนอราคา"</strong>
+                        <p class="text-secondary mb-0">โปรแกรมจะนำคุณพรีวิวหน้าเอกสาร <b>ใบเสนอราคา (Quotation) A4</b> อย่างเป็นทางการ คุณสามารถแชร์ส่งไปยัง LINE, Facebook, Email หรือกดพิมพ์ผ่านเครื่องปริ้นเตอร์ได้ทันที</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Booking -->
+        <section id="booking" class="guide-section">
+            <h3 class="fw-bold mb-4 border-start border-4 border-gold ps-3">6. ระบบการจองและล็อคห้อง (Booking & Lock System)</h3>
+            <p class="text-secondary lh-lg mb-4">
+                ระบบจัดการห้องให้ลูกค้าที่ตัดสินใจแล้วว่าต้องการซื้อ เพื่อป้องกันไม่ให้ฝ่ายขายท่านอื่นนำห้องไปขายทับซ้อน
+            </p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card bg-light border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="bi bi-lock-fill"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-0">ล็อคห้อง (Lock)</h5>
+                        </div>
+                        <p class="text-secondary lh-lg mb-0">
+                            หากลูกค้ากำลังตกลงเงื่อนไขหรือรอโอนเงินจอง คุณสามารถกดหน้าต่างห้องว่าง แล้วเลือก <b>"ล็อคห้อง"</b> เพื่อเปลี่ยนสถานะห้องเป็นสีดำชั่วคราว ห้องจะถูกห้ามทำรายการจากพนักงานท่านอื่นจนกว่าคุณจะปลดล็อค
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-light-gold border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="bi bi-bag-check-fill"></i>
+                            </div>
+                            <h5 class="fw-bold text-gold mb-0">ทำจองถาวร (Booking)</h5>
+                        </div>
+                        <p class="text-secondary lh-lg mb-0">
+                            เมื่อชำระเงินจองแล้ว ในหน้าต่างห้องพัก หรือหน้าใบเสนอราคา ให้กด <b>"จองห้อง"</b> ระบบจะบันทึกประวัติการจองและเปลี่ยนสถานะห้องเป็น <span class="badge bg-warning text-dark">สีเหลือง (จองแล้ว)</span> ทันที
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 border rounded-4">
+                <h6 class="fw-bold"><i class="bi bi-folder-check text-primary me-2"></i> การเรียกดูประวัติการจอง</h6>
+                <p class="text-secondary mt-2 mb-0">สามารถคลิกเมนู <b>"ข้อมูลการจอง" (Bookings)</b> ด้านซ้ายมือมือ เพื่อดูประวัติ สรุปยอดเงินต่างๆ และพิมพ์เอกสารย้อนหลัง รวมถึงยกเลิกการจองได้</p>
+            </div>
+        </section>
+
+        <!-- Section: Chatbot -->
+        <section id="chatbot" class="guide-section border-0 mb-0 pb-0">
+            <h3 class="fw-bold mb-4 border-start border-4 border-gold ps-3">7. ถามตอบด้วย AI Assistant (AI Chat)</h3>
+            <p class="text-secondary lh-lg mb-4">
+                ระบบผู้ช่วยตอบคำถามโครงการอัตโนมัติ สำหรับฝ่ายขายเพื่อใช้หาข้อมูลอย่างรวดเร็ว เช่น ถามราคา อัปเดตโปรโมชั่น หรือจำนวนห้องที่เหลืออยู่
+            </p>
+            <div class="bg-canvas border border-secondary-subtle rounded-4 p-4 text-center">
+                <i class="bi bi-robot fs-1 text-gold mb-3"></i>
+                <h5 class="fw-bold text-dark">ทดลองถามคำถามตัวอย่างได้เลย!</h5>
+                <p class="text-secondary mb-3">ให้ไปที่แท็บเมนู <b>"AI ถามตอบ" (AI Chat)</b> ในแถบด้านซ้าย</p>
+                <div class="d-inline-block text-start bg-white p-3 rounded-4 shadow-sm w-100" style="max-width: 500px;">
+                    <div class="text-success small fw-bold mb-2">💡 พิมพ์ด้วยคีย์เวิร์ดต่อไปนี้:</div>
+                    <ul class="mb-0 text-dark small lh-lg">
+                        <li>"ราคาเริ่มต้นเท่าไหร่" หรือ "Price"</li>
+                        <li>"มีห้องว่างเหลือจำนวนเท่าไหร่" หรือ "Available"</li>
+                        <li>"อัปเดตโปรโมชั่นเดือนนี้" หรือ "Promo"</li>
+                        <li>"รายละเอียดส่วนกลางโครงการ" หรือ "Facility / Map"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
